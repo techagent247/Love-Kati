@@ -15,6 +15,7 @@ import { Route as CateringRouteImport } from './routes/catering'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as MenuRouteImport } from './routes/menu'
 import { Route as OrderOnlineRouteImport } from './routes/order-online'
+import { Route as ApiChatRouteImport } from './routes/api/chat'
 import { Route as MenuIndexRouteImport } from './routes/menu.index'
 import { Route as MenuCategoryRouteImport } from './routes/menu.$category'
 
@@ -48,6 +49,11 @@ const OrderOnlineRoute = OrderOnlineRouteImport.update({
   path: '/order-online',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiChatRoute = ApiChatRouteImport.update({
+  id: '/api/chat',
+  path: '/api/chat',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MenuIndexRoute = MenuIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -66,6 +72,7 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/menu': typeof MenuRouteWithChildren
   '/order-online': typeof OrderOnlineRoute
+  '/api/chat': typeof ApiChatRoute
   '/menu/$category': typeof MenuCategoryRoute
   '/menu/': typeof MenuIndexRoute
 }
@@ -75,6 +82,7 @@ export interface FileRoutesByTo {
   '/catering': typeof CateringRoute
   '/contact': typeof ContactRoute
   '/order-online': typeof OrderOnlineRoute
+  '/api/chat': typeof ApiChatRoute
   '/menu/$category': typeof MenuCategoryRoute
   '/menu': typeof MenuIndexRoute
 }
@@ -86,6 +94,7 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/menu': typeof MenuRouteWithChildren
   '/order-online': typeof OrderOnlineRoute
+  '/api/chat': typeof ApiChatRoute
   '/menu/$category': typeof MenuCategoryRoute
   '/menu/': typeof MenuIndexRoute
 }
@@ -98,6 +107,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/menu'
     | '/order-online'
+    | '/api/chat'
     | '/menu/$category'
     | '/menu/'
   fileRoutesByTo: FileRoutesByTo
@@ -107,6 +117,7 @@ export interface FileRouteTypes {
     | '/catering'
     | '/contact'
     | '/order-online'
+    | '/api/chat'
     | '/menu/$category'
     | '/menu'
   id:
@@ -117,6 +128,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/menu'
     | '/order-online'
+    | '/api/chat'
     | '/menu/$category'
     | '/menu/'
   fileRoutesById: FileRoutesById
@@ -128,6 +140,7 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   MenuRoute: typeof MenuRouteWithChildren
   OrderOnlineRoute: typeof OrderOnlineRoute
+  ApiChatRoute: typeof ApiChatRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -174,6 +187,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof OrderOnlineRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/chat': {
+      id: '/api/chat'
+      path: '/api/chat'
+      fullPath: '/api/chat'
+      preLoaderRoute: typeof ApiChatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/menu/': {
       id: '/menu/'
       path: '/'
@@ -210,6 +230,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   MenuRoute: MenuRouteWithChildren,
   OrderOnlineRoute: OrderOnlineRoute,
+  ApiChatRoute: ApiChatRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
