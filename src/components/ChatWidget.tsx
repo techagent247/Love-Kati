@@ -43,7 +43,7 @@ export function ChatWidget() {
         const { done, value } = await reader.read();
         if (done) break;
         acc += dec.decode(value, { stream: true });
-        const [answer, err] = acc.split("[[error]]");
+        const [answer = "", err] = acc.split("[[error]]");
         setMsgs((m) => {
           const copy = [...m];
           copy[copy.length - 1] = err !== undefined && !answer.trim()

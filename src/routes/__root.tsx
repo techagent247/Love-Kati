@@ -15,6 +15,7 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Phone } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { ChatWidget } from "@/components/ChatWidget";
 import { business } from "@/data/business";
 
 function NotFoundComponent() {
@@ -129,6 +130,7 @@ function RootComponent() {
         <Outlet />
       </main>
       <Footer />
+      <ChatWidget />
       <a href={business.phoneHref} className="btn-pop btn-sun fixed bottom-4 right-4 z-40 px-4 py-3 text-lg lg:hidden" aria-label={`Call ${business.phone}`}>
         <Phone className="h-5 w-5" /> Call
       </a>
