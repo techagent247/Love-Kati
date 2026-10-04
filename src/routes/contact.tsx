@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Facebook, MapPin, Phone } from "lucide-react";
 import { PageHero, Reveal } from "@/components/graphics";
 import { business } from "@/data/business";
+import { EnquiryForm } from "@/components/EnquiryForm";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
