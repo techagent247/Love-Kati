@@ -36,27 +36,7 @@ function Contact() {
             </a>
           </Reveal>
           <Reveal delay={150}>
-            <form
-              className="card-pop space-y-4 p-6 md:p-8"
-              onSubmit={(e) => { e.preventDefault(); setSent(true); }}
-            >
-              <h2 className="text-4xl uppercase">Send an enquiry</h2>
-              {sent ? (
-                <p className="rounded-xl bg-sun p-4 font-semibold">Thanks! Online enquiries aren't connected yet — please call {business.phone} so we don't miss you.</p>
-              ) : (
-                <>
-                  <div className="grid gap-4 sm:grid-cols-2">
-                    <label className="block"><span className="font-label text-lg">Name</span><input required className={field} /></label>
-                    <label className="block"><span className="font-label text-lg">Phone or email</span><input required className={field} /></label>
-                  </div>
-                  <label className="block"><span className="font-label text-lg">Event type</span>
-                    <select className={field}>{["General question", ...business.events].map((e) => <option key={e}>{e}</option>)}</select>
-                  </label>
-                  <label className="block"><span className="font-label text-lg">Message</span><textarea rows={4} className={field} /></label>
-                  <button className="btn-pop btn-magenta w-full">Send enquiry</button>
-                </>
-              )}
-            </form>
+            <EnquiryForm />
           </Reveal>
         </div>
       </section>
